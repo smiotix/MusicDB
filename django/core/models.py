@@ -2,6 +2,10 @@ from django.db import models
 
 # Create your models here.
 
+class Tracks(models.Model):
+    track_no = models.PositiveIntegerField()
+    track_name = models.CharField(max_length=140)
+    
 class Album(models.Model):
     POP = 0
     JAZZ = 1
@@ -22,10 +26,9 @@ class Album(models.Model):
     year = models.PositiveIntegerField()
     genre = models.IntegerField(choices=GENRE,default=POP)
     spotify = models.URLField(blank=True)
-    track_no = models.PositiveIntegerField()
-    track_name = models.CharField(max_length=140)
+    
+    objects = Tracks()
+
     def __str__(self):
         return '{} {}'.format(self.album_title, self.year)
     
-    class Meta:
-        unique_together = ('track_no', 'track_name')
