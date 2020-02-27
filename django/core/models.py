@@ -22,15 +22,11 @@ class Album(models.Model):
     album_title = models.CharField(max_length=140)
     year = models.PositiveIntegerField()
     genre = models.IntegerField(choices=GENRE,default=POP)
+    notes = models.TextField()
     spotify = models.URLField(blank=True)
-    for i in range(30):
-        tracks = models.ForeignKey('Track', on_delete=models.CASCADE)
-        Tracks.append(tracks)
-        
+       
     def __str__(self):
         return '{} {}'.format(self.album_title, self.year)
     
-class Track(models.Model):
-    track_no = models.PositiveIntegerField()
-    track_name = models.CharField(max_length=140)
+
     
