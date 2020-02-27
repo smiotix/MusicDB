@@ -12,8 +12,8 @@ class Album(models.Model):
     ETC = 6
     GENRE = ((POP, 'POP MUSIC'),
              (JAZZ, 'JAZZ'),
-             (CLASSIC, 'CLASSIC MUSIC')
-             (ROCK, 'ROCK')
+             (CLASSIC, 'CLASSIC MUSIC'),
+             (ROCK, 'ROCK'),
              (HIPHOP, 'HIPHOP'),
              (EDM, 'EDM'),
              (ETC, 'OTHER'),
@@ -28,4 +28,4 @@ class Album(models.Model):
         return '{} {}'.format(self.album_title, self.year)
     
     class Meta:
-        track = ('track_no', 'track_name')
+        unique_together = ('track_no', 'track_name')
