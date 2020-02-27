@@ -2,10 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-class Tracks(models.Model):
-    track_no = models.PositiveIntegerField()
-    track_name = models.CharField(max_length=140)
-    
 class Album(models.Model):
     POP = 0
     JAZZ = 1
@@ -14,6 +10,7 @@ class Album(models.Model):
     HIPHOP = 4
     EDM = 5
     ETC = 6
+    Tracks = list()
     GENRE = ((POP, 'POP MUSIC'),
              (JAZZ, 'JAZZ'),
              (CLASSIC, 'CLASSIC MUSIC'),
@@ -26,9 +23,14 @@ class Album(models.Model):
     year = models.PositiveIntegerField()
     genre = models.IntegerField(choices=GENRE,default=POP)
     spotify = models.URLField(blank=True)
-    
-    objects = Tracks()
-
+    for i in range(30):
+        tracks = models.ForeignKey('Track', on_delete=models.CASCADE)
+        Tracks.append(tracks)
+        
     def __str__(self):
         return '{} {}'.format(self.album_title, self.year)
+    
+class Track(models.Model):
+    track_no = models.PositiveIntegerField()
+    track_name = models.CharField(max_length=140)
     
