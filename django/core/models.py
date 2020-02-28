@@ -22,7 +22,7 @@ class Album(models.Model):
     album_title = models.CharField(max_length=140)
     year = models.PositiveIntegerField()
     genre = models.IntegerField(choices=GENRE,default=POP)
-    notes = models.TextField()
+    criticism = models.TextField()
     spotify = models.URLField(blank=True)
        
     def __str__(self):
