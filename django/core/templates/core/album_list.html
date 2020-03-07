@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <ul>
+    {% for album in object_list %}
+    <li>{{ album }}</li>
+    {% empty %}
+    <li>
+      No Album yet.
+      </li>
+      {% endfor %}
+      </ul>
+      <p>
+        Using https?
+        {{ request.is_secure|yesno }}
+        </p>
+        </body>
+        </html>
+        
