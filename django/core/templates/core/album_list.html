@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html>
-<body>
-  <ul>
+{% extends 'base.html' %}
+
+{% block title %}
+  All The Albums
+{% endblock %}
+
+
+{% block main %}
+  <ul >
     {% for album in object_list %}
-    <li>{{ album }}</li>
-    {% empty %}
-    <li>
-      No Album yet.
-      </li>
-      {% endfor %}
-      </ul>
-      <p>
-        Using https?
-        {{ request.is_secure|yesno }}
-        </p>
-        </body>
-        </html>
-        
+      <li >
+        <a href="{% url 'core:AlbumDetail' pk=album.id %}" >
+          {{ album }}
+        </a >
+      </li >
+    {% endfor %}
+  </ul >
+{% endblock %}
