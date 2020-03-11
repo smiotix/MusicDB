@@ -25,6 +25,8 @@ class Album(models.Model):
     criticism = models.TextField()
     spotify = models.URLField(blank=True)
        
+    class Meta:
+        ordering = ('year', 'album_title')
     def __str__(self):
         return '{} {}'.format(self.album_title, self.year)
     
