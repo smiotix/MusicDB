@@ -4,6 +4,9 @@ from . import views
 app_name = 'core'
 urlpatterns = [
         path('albums',
-        view.AlbumList.as_view(),
+        views.AlbumList.as_view(),
         name='AlbumList'),
+        path('album/<int:pk>',
+             views.AlbumDetail.as_view(),
+             name='AlbumDetail'),
 ]
