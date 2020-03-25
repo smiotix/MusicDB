@@ -19,6 +19,7 @@ class Album(models.Model):
              (EDM, 'EDM'),
              (ETC, 'OTHER'),
              )
+    artist = models.ForeignKey(to='Artist',on_delete=models.SET_NULL,related_name='created',null=True,blank=True)
     album_title = models.CharField(max_length=140)
     year = models.PositiveIntegerField()
     genre = models.IntegerField(choices=GENRE,default=POP)
